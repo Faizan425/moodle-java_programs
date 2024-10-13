@@ -1,0 +1,76 @@
+Problem Statement:
+Given 2 strings input1 & input2.
+
+·       Concatenate both the strings.
+
+·       Remove duplicate alphabets & white spaces.
+
+·       Arrange the alphabets in descending order.
+
+Assumption 1:
+
+There will either be alphabets, white spaces or null in both the inputs.
+
+Assumption 2:
+
+Both inputs will be in lower case.
+
+Example 1:
+
+Input 1: apple
+
+Input 2: orange
+
+Output: rponlgea
+
+Example 2:
+
+Input 1: fruits
+
+Input 2: are good
+
+Output: utsroigfeda
+
+Example 3:
+
+Input 1: ""
+
+Input 2: ""
+
+Output: null
+
+Code:
+
+import java.util.*;
+public class stringprocessor{
+    public static String processString(String input1,String input2){
+        String combined=input1+input2;
+        combined=combined.replaceAll("\\s+","");
+        boolean [] seen = new boolean[26];
+        StringBuilder uniqueChars = new StringBuilder();
+        for(char c:combined.toCharArray()){
+            int index=c-'a';
+            if(!seen[index]){
+                seen[index]= true;
+                uniqueChars.append(c);
+            }
+        }
+        char[] resultArray = uniqueChars.toString().toCharArray();
+        java.util.Arrays.sort(resultArray);
+        for(int i=0;i<resultArray.length/2;i++){
+            char temp = resultArray[i];
+            resultArray[i]= resultArray[resultArray.length-1-i];
+            resultArray[resultArray.length-1-i]=temp;
+        }
+        String result=new String(resultArray);
+        return result.isEmpty()?"null":result;
+    }
+    public static void main(String[] args){
+        Scanner sc =new Scanner(System.in);
+        String input1=sc.nextLine();
+        String input2 = sc.nextLine();
+        String result = processString(input1,input2);
+        System.out.println(result);
+        sc.close();
+    }
+}
