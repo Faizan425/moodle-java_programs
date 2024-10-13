@@ -1,0 +1,63 @@
+Problem Statement:
+You have recently seen a motivational sports movie and want to start exercising regularly. Your coach tells you that it is important to get up early in the morning to exercise. She sets up a schedule for you:
+
+On weekdays (Monday - Friday), you have to get up at 5:00. On weekends (Saturday & Sunday), you can wake up at 6:00. However, if you are on vacation, then you can get up at 7:00 on weekdays and 9:00 on weekends.
+
+Write a program to print the time you should get up.
+
+Input Format
+
+Input containing an integer and a boolean value.
+
+The integer tells you the day it is (1-Sunday, 2-Monday, 3-Tuesday, 4-Wednesday, 5-Thursday, 6-Friday, 7-Saturday). The boolean is true if you are on vacation and false if you’re not on vacation.
+
+You have to print the time you should get up.
+
+Example Input:
+
+1 false
+
+Output:
+
+6:00
+
+Example Input:
+
+5 false
+
+Output:
+
+5:00
+
+Example Input:
+
+1 true
+
+Output:
+
+9:00
+
+Code:
+
+import java.util.*;
+class prog{
+    public static void main(String[] args){
+        boolean b;
+        int d;
+        Scanner sc=new Scanner(System.in);
+        d=sc.nextInt();
+        b=sc.nextBoolean();
+        if((d>=2 && d<=6)&& b==false){
+            System.out.println("5:00");
+        }
+        else if((d>=2 && d<=6) && b){
+            System.out.println("7:00");
+        }
+        else if((d==1||d==7)&&b==false){
+            System.out.println("6:00");
+        }
+        else{
+            System.out.println("9:00");
+        }
+    }
+}
