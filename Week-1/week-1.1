@@ -1,0 +1,20 @@
+Write a program to find whether the given input number is Odd.
+
+If the given number is odd, the program should return 2 else It should return 1.
+
+Note: The number passed to the program can either be negative. positive or zero. Zero should NOT be treated as Odd.
+
+import java.util.*;
+class prog{
+    public static void main(String[] args){
+        Scanner s=new Scanner(System.in);
+        int n;
+        n=s.nextInt();
+        if(n==0 || n%2==0){
+            System.out.println(1);
+        }
+        else{
+            System.out.println(2);
+        }
+    }
+}
