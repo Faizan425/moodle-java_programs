@@ -1,0 +1,52 @@
+Write a Java program to input a number from user and print it into words using for loop. How to display number in words using loop in Java programming. 
+
+Logic to print number in words in Java programming.
+
+Example
+
+Input
+
+1234
+Output
+One Two Three Four
+
+Input:
+
+16
+
+Output:
+
+one six
+
+
+
+code:
+
+import java.util.*;
+class prog{
+    public static void main(String[] args){
+        String [] mat={"Zero","One","Two","Three","Four","Five","Six","Seven","Eight","Nine"};
+        Scanner sc= new Scanner (System.in);
+        int n=sc.nextInt();
+        int r;
+        int temp=n,counter=0;
+        while(temp!=0){
+            r=temp%10;
+            temp=temp-r;
+            temp=temp/10;
+            counter++;
+        }
+        String [] pr=new String[counter];
+        int index=0;
+        while(n!=0){
+            r=n%10;
+            pr[counter-index-1]=mat[r];
+            n=n-r;
+            n=n/10;
+            index++;
+        }
+        for(String i: pr){
+            System.out.print(i+" ");
+        }
+    }
+}
