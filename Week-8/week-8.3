@@ -1,0 +1,87 @@
+Problem Statement:
+Create a base class Shape with a method called calculateArea(). Create three subclasses: Circle, Rectangle, and Triangle. Override the calculateArea() method in each subclass to calculate and return the shape's area.
+
+In the given exercise, here is a simple diagram illustrating polymorphism implementation:
+
+Polymorphism: Shape Class with Circle, Rectangle, and Triangle Subclasses for Area Calculation
+
+ abstract class Shape {
+    public abstract double calculateArea() ;
+    }
+}
+
+System.out.printf("Area of a Triangle :%.2f%n",((0.5)*base*height));  // use this statement
+
+sample Input :
+
+4    // radius of the circle to calculate area PI*r*r
+
+5   //  length of the rectangle
+
+6  // breadth of the rectangle to calculate the area of a rectangle
+
+4    // base of the triangle
+
+3   //  height of the triangle
+
+OUTPUT:
+
+Area of a circle :50.27
+Area of a Rectangle :30.00
+Area of a Triangle :6.00
+
+Code:
+
+import java.util.*;
+class circle {
+    float area;
+    public circle(){
+        this.area=0;
+    }
+    public void calculateArea(float radius){
+        this.area=(float)Math.PI*radius*radius;
+        System.out.print("Area of a circle: ");
+        System.out.format("%.2f",area);
+        System.out.println();
+    }
+}
+class rectangle{
+    float area;
+    public rectangle(){
+        this.area=0;
+    }
+    public void calculateArea(float length,float breadth){
+        this.area=length*breadth;
+        System.out.print("Area of a Rectangle: ");
+        System.out.format("%.2f",area);
+        System.out.println();
+    }
+}
+class Triangle{
+    float area;
+    public Triangle(){
+        this.area=0;
+    }
+    public void calculateArea(float base,float height){
+        this.area=(float)0.5*base*height;
+        System.out.print("Area of a Triangle: ");
+        System.out.format("%.2f",this.area);
+        System.out.println();
+    }
+}
+class prog{
+    public static void main(String [] args){
+        circle c=new circle();
+        rectangle r= new rectangle();
+        Triangle t=new Triangle();
+        Scanner sc = new Scanner(System.in);
+        float ra=sc.nextFloat();
+        float l=sc.nextFloat();
+        float br=sc.nextFloat();
+        float b=sc.nextFloat();
+        float h=sc.nextFloat();
+        c.calculateArea(ra);
+        r.calculateArea(l,br);
+        t.calculateArea(b,h);
+    }
+}
