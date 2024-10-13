@@ -1,0 +1,69 @@
+Problem Statement:
+create a class called College with attribute String name,  constructor to initialize the name attribute , a method called Admitted(). Create a subclass called CSE that  extends Student class, with department attribute ,  Course() method to sub class. Print the details of the Student. 
+
+College:
+
+String collegeName;
+
+public College() { }
+
+public admitted() { }
+
+Student:
+
+String studentName;
+
+String department;
+
+public Student(String collegeName, String studentName,String depart) { }
+
+public toString()
+
+Expected Output:
+
+A student admitted in REC
+CollegeName : REC
+StudentName : Venkatesh
+Department : CSE
+
+Code:
+
+class College
+{
+protected   String collegeName;
+
+public College(String collegeName) {
+    // initialize the instance variables 
+    this.collegeName=collegeName;
+    }
+
+public void admitted() {
+    System.out.println("A student admitted in "+collegeName);
+}
+}
+class Student extends College{
+
+String studentName;
+String department;
+
+public Student(String collegeName, String studentName,String depart) {
+   // initialize the instance variables 
+   super(collegeName);
+   this.studentName=studentName;
+   this.department=depart;
+   
+}
+
+public String toString(){
+    // return the details of the student
+    return "CollegeName : "+this.collegeName+"\nStudentName : "+this.studentName+"\nDepartment : "+this.department;
+    
+}
+}
+class prog {
+public static void main (String[] args) {
+        Student  s1 = new Student("REC","Venkatesh","CSE");
+        s1.admitted();                                // invoke the admitted() method
+        System.out.println(s1.toString()); 
+}
+}
