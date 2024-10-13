@@ -1,0 +1,110 @@
+Problem Statement:
+Given an integer array as input, perform the following operations on the array, in the below specified sequence.
+
+1.      Find the maximum number in the array.
+
+2.      Subtract the maximum number from each element of the array.
+
+3.      Multiply the maximum number (found in step 1) to each element of the resultant array.
+
+After the operations are done, return the resultant array.
+
+Example 1:
+
+input1 = 4 (represents the number of elements in the input1 array)
+
+input2 = {1, 5, 6, 9}
+
+Expected Output = {-72, -36, 27, 0}
+
+Explanation:
+
+Step 1: The maximum number in the given array is 9.
+
+Step 2: Subtracting the maximum number 9 from each element of the array:
+
+{(1 - 9), (5 - 9), (6 - 9), (9 - 9)} = {-8, -4, -3, 0}
+
+Step 3: Multiplying the maximum number 9 to each of the resultant array:
+
+{(-8 x 9), (-4 x 9), (3 x 9), (0 x 9)} = {-72, -36, -27, 0}
+
+So, the expected output is the resultant array {-72, -36, -27, 0}.
+
+Example 2:
+
+input1 = 5 (represents the number of elements in the input1 array)
+
+input2 = {10, 87, 63, 42, 2}
+
+Expected Output = {-6699, 0, -2088, -3915, -7395}
+
+Explanation:
+
+Step 1: The maximum number in the given array is 87.
+
+Step 2: Subtracting the maximum number 87 from each element of the array:
+
+{(10 - 87), (87 - 87), (63 - 87), (42 - 87), (2 - 87)} = {-77, 0, -24, -45, -85}
+
+Step 3: Multiplying the maximum number 87 to each of the resultant array:
+
+{(-77 x 87), (0 x 87), (-24 x 87), (-45 x 87), (-85 x 87)} = {-6699, 0, -2088, -3915, -7395}
+
+So, the expected output is the resultant array {-6699, 0, -2088, -3915, -7395}.
+
+Example 3:
+
+input1 = 2 (represents the number of elements in the input1 array)
+
+input2 = {-9, 9}
+
+Expected Output = {-162, 0}
+
+Explanation:
+
+Step 1: The maximum number in the given array is 9.
+
+Step 2: Subtracting the maximum number 9 from each element of the array:
+
+{(-9 - 9), (9 - 9)} = {-18, 0}
+
+Step 3: Multiplying the maximum number 9 to each of the resultant array:
+
+{(-18 x 9), (0 x 9)} = {-162, 0}
+
+So, the expected output is the resultant array {-162, 0}.
+
+Note: The input array will contain not more than 100 elements
+
+
+
+Code:
+
+import java.util.*;
+class prog{
+    public static void main(String [] args){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int [] arr=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        int max=arr[0];
+        for(int i=0;i<n;i++){
+            if(arr[i]>max){
+                max=arr[i];
+            }
+        }
+        for(int i=0;i<n;i++){
+            arr[i]=arr[i]-max;
+        }
+        for(int i=0;i<n;i++){
+            arr[i]=arr[i]*max;
+        }
+        int sum=0;
+        for(int i:arr){
+            System.out.print(i+" ");
+        }
+    }
+}
