@@ -1,0 +1,80 @@
+Problem Statement:
+As a logic building learner you are given the task to extract the string which has vowel as the first and last characters from the given array of Strings.
+
+Step1: Scan through the array of Strings, extract the Strings with first and last characters as vowels; these strings should be concatenated.
+
+Step2: Convert the concatenated string to lowercase and return it.
+
+If none of the strings in the array has first and last character as vowel, then return no matches found  
+
+input1: an integer representing the number of elements in the array.
+
+input2: String array.
+
+Example 1:
+
+input1: 3
+
+input2: {“oreo”, “sirish”, “apple”}
+
+output: oreoapple
+
+Example 2:
+
+input1: 2
+
+input2: {“Mango”, “banana”}
+
+output: no matches found
+
+Explanation:
+
+None of the strings has first and last character as vowel.
+
+ 
+
+Hence the output is no matches found.
+
+Example 3:
+
+input1: 3
+
+input2: {“Ate”, “Ace”, “Girl”}
+
+output: ateace
+
+
+
+Code:
+import java.util.*;
+
+public class VowelExtraction{
+    public static String extractStrings(String[] strings){
+        StringBuilder result=new StringBuilder();
+        for(String str: strings){
+            if(isVowel(str.charAt(0))&& isVowel(str.charAt(str.length()-1))){
+                result.append(str);
+            }
+        }
+        return result.toString().toLowerCase();
+    }
+    public static boolean isVowel( char ch){
+        ch=Character.toLowerCase(ch);
+        return "aeiou".indexOf(ch)!=-1;
+    }
+    public static void main(String[] args){
+        Scanner sc= new Scanner(System.in);
+        int n=sc.nextInt();
+        String[] strings=new String[n];
+        for(int i=0;i<n;i++){
+            strings[i]=sc.next();
+        }
+        String result=extractStrings(strings);
+        if(result.isEmpty()){
+            System.out.println("no matches found");
+        }
+        else{
+            System.out.println(result);
+        }
+    }
+}
