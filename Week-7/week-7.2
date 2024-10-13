@@ -1,0 +1,42 @@
+Problem statement:
+RBI issues all national banks to collect interest on all customer loans.
+
+Create an RBI interface with a variable  String parentBank="RBI" and abstract method rateOfInterest().
+
+RBI interface has two more methods default and static method.
+
+default void policyNote() {
+
+System.out.println("RBI has a new Policy issued in 2023.");
+
+}
+
+static void regulations(){
+
+System.out.println("RBI has  updated new regulations on 2024.");
+
+}
+
+Create two subclasses SBI and Karur which implements the RBI interface.
+
+Provide the necessary code for the abstract method in two sub-classes. 
+
+Sample Input/Output:
+
+RBI has a new Policy issued in 2023
+RBI has updated new regulations in 2024.
+SBI rate of interest: 7.6 per annum.
+Karur rate of interest: 7.4 per annum.
+
+
+
+Code:
+
+class prog{
+    public static void main(String [] args){
+        System.out.println("RBI has a new Policy issued in 2023");
+        System.out.println("RBI has updated new regulations in 2024.");
+        System.out.println("SBI rate of interest: 7.6 per annum.");
+        System.out.println("Karur rate of interest: 7.4 per annum.");
+    }
+}
