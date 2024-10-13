@@ -1,0 +1,101 @@
+Problem Statement:
+
+You are provided with a set of numbers (array of numbers).
+
+You have to generate the sum of specific numbers based on its position in the array set provided to you.
+
+This is explained below:
+
+Example 1:
+
+Let us assume the encoded set of numbers given to you is:
+
+input1:5 and input2: {1, 51, 436, 7860, 41236}
+
+Step 1:
+
+Starting from the 0th index of the array pick up digits as per below:
+
+0th index – pick up the units value of the number (in this case is 1).
+
+1st index - pick up the tens value of the number (in this case it is 5).
+
+2nd index - pick up the hundreds value of the number (in this case it is 4).
+
+3rd index - pick up the thousands value of the number (in this case it is 7).
+
+4th index - pick up the ten thousands value of the number (in this case it is 4).
+
+(Continue this for all the elements of the input array).
+
+The array generated from Step 1 will then be – {1, 5, 4, 7, 4}.
+
+Step 2:
+
+Square each number present in the array generated in Step 1.
+
+{1, 25, 16, 49, 16}
+
+Step 3:
+
+Calculate the sum of all elements of the array generated in Step 2 to get the final result. The result will be = 107.
+
+Note:
+
+1)     While picking up a number in Step1, if you observe that the number is smaller than the required position then use 0.
+
+2)     In the given function, input1[] is the array of numbers and input2 represents the number of elements in input1.
+
+Example 2:
+
+input1: 5 and input1: {1, 5, 423, 310, 61540}
+
+Step 1:
+
+Generating the new array based on position, we get the below array:
+
+{1, 0, 4, 0, 6}
+
+In this case, the value in input1 at index 1 and 3 is less than the value required to be picked up based on position, so we use a 0.
+
+Step 2:
+
+{1, 0, 16, 0, 36}
+
+Step 3:
+
+The final result = 53.
+
+Code:
+
+import java.util.*;
+public class prog{
+    public  static int extractDigit(int num,int position){
+        String numstr=String.valueOf(num);
+        int length = numstr.length();
+        if(position>=length){
+            return 0;
+        }
+        char digit=numstr.charAt(length-1-position);
+        return Character.getNumericValue(digit);
+    }
+    public static void main(String [] args){
+        Scanner sc = new Scanner(System.in);
+        int n= sc.nextInt();
+        int [] arr=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        for(int i=0;i<n;i++){
+            arr[i]=extractDigit(arr[i],i);
+        }
+        for(int i=0;i<n;i++){
+            arr[i]=arr[i]*arr[i];
+        }
+        int sum=0;
+        for(int i:arr){
+            sum+=i;
+        }
+        System.out.println(sum);
+    }
+}
