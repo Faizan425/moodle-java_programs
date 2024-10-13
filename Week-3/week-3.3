@@ -1,0 +1,95 @@
+Problem Statement:
+
+Given an array of numbers, you are expected to return the sum of the longest sequence of POSITIVE numbers in the array.
+
+If there are NO positive numbers in the array, you are expected to return -1.
+
+In this question’s scope, the number 0 should be considered as positive.
+
+Note: If there are more than one group of elements in the array having the longest sequence of POSITIVE numbers, you are expected to return the total sum of all those POSITIVE numbers (see example 3 below).
+
+input1 represents the number of elements in the array.
+
+input2 represents the array of integers.
+
+Example 1:
+
+input1 = 16
+
+input2 = {-12, -16, 12, 18, 18, 14, -4, -12, -13, 32, 34, -5, 66, 78, 78, -79}
+
+Expected output = 62
+
+Explanation:
+
+The input array contains four sequences of POSITIVE numbers, i.e. "12, 18, 18, 14", "12", "32, 34", and "66, 78, 78". The first sequence "12, 18, 18, 14" is the longest of the four as it contains 4 elements. Therefore, the expected output = sum of the longest sequence of POSITIVE numbers = 12 + 18 + 18 + 14 = 63.
+
+Example 2:
+
+input1 = 11
+
+input2 = {-22, -24, 16, -1, -17, -19, -37, -25, -19, -93, -61}
+
+Expected output = -1
+
+Explanation:
+
+There are NO positive numbers in the input array. Therefore, the expected output for such cases = -1.
+
+Example 3:
+
+input1 = 16
+
+input2 = {-58, 32, 26, 92, -10, -4, 12, 0, 12, -2, 4, 32, -9, -7, 78, -79}
+
+Expected output = 174
+
+Explanation:
+
+The input array contains four sequences of POSITIVE numbers, i.e. "32, 26, 92", "12, 0, 12", "4, 32", and "78". The first and second sequences "32, 26, 92" and "12, 0, 12” are the longest of the four as they contain 4 elements each. Therefore, the expected output = sum of the longest sequence of POSITIVE numbers = (32 + 26 + 92) + (12 + 0 + 12) = 174.
+
+
+
+
+Code:
+
+import java.util.*;
+public class prog{
+    public static int longest(int [] arr){
+        int maxSum=-1,currentSum=0,maxLength=0,currentLength=0;
+        for(int num: arr){
+            if(num>=0){
+                currentSum+=num;
+                currentLength++;
+            }
+            else{
+                if(currentLength> maxLength){
+                    maxLength=currentLength;
+                    maxSum=currentSum;
+                }
+                else if(currentLength==maxLength){
+                    maxSum+=currentSum;
+                }
+                currentSum=0;
+                currentLength=0;
+            }
+        }
+        if(currentLength  >  maxLength){
+            maxSum=currentSum;
+        }
+        else if(currentLength == maxLength){
+            maxSum+=currentSum;
+        }
+        return maxSum;
+    }
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n= sc.nextInt();
+        int []arr=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        int result=longest(arr);
+        System.out.println(result);
+    }
+}
