@@ -1,0 +1,14 @@
+import java.util.*;
+import java.util.stream.*;
+public class prog{
+    public static void main(String [] args){
+        Scanner sc=new Scanner(System.in);
+        ArrayList<Integer> arr=new ArrayList<>();
+        int n=sc.nextInt();
+        for(int i=0;i<n;i++){
+            arr.add(sc.nextInt());
+        }
+        System.out.println("ArrayList: "+arr);
+        System.out.println("First : "+arr.get(0)+", "+"Last : "+arr.get(n-1));
+    }
+}
