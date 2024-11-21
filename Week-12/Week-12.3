@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class Decoder {
+
+    public static String decodeString(String encoded) {
+        StringBuilder decodedWord = new StringBuilder();
+        
+        String[] zeroGroups = encoded.split("1");
+        
+        for (String group : zeroGroups) {
+            int count = group.length();
+            char decodedChar = (char) ('Z' - (count - 1));
+            decodedWord.append(decodedChar);
+        }
+        
+        return decodedWord.toString();
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        String input = scanner.nextLine();
+        
+        String decoded = decodeString(input);
+        System.out.println(decoded);
+        
+        scanner.close();
+    }
+}
